@@ -134,6 +134,8 @@ let thermometer = {
 		let deltaC = this.currentC - this.minTempC;// +273.15;
 		//ograniczenie min wartosci - przesuwac tylko do zera absolutnego
 		if(deltaC <= 0) deltaC = 0;
+		//ograniczenie max wartosci - przesuwac tylko do triliona
+		if(deltaC <= 1000000000000) deltaC = 1000000000000;
 
 		//wyliczenie przesuniecia px
 		let deltaPx = 0;
