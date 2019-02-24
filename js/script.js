@@ -7,6 +7,26 @@ let ouputTemp = document.querySelector(".converter .output");
 //do przesuwania bg
 let converter = document.querySelector(".converter");
 let thermoDiv = document.querySelector(".thermometer");
+//buttony do obliczen
+let buttonCalculateC = document.getElementsByClassName('btn-calc-c')[0];
+buttonCalculateC.addEventListener('click', function(event) {
+	let temp = document.querySelector('input[name="temperature"]').value;
+	if(isNaN(temp) || temp == '') {
+		alert('Podana temperatura jest nieprawidłowa');
+	} else {
+		thermometer.setTemp('F', temp);
+	}
+});
+
+let buttonCalculateF = document.getElementsByClassName('btn-calc-f')[0];
+buttonCalculateF.addEventListener('click', function(event) {
+	let temp = document.querySelector('input[name="temperature"]').value;
+	if(isNaN(temp) || temp == '') {
+		alert('Podana temperatura jest nieprawidłowa');
+	} else {
+		thermometer.setTemp('C', temp);
+	}
+});
 
 //funkcja do ustawiania widocznosci widgetow hot/cold
 let toggleWidget = function(el, mode) {
@@ -24,8 +44,6 @@ let thermometer = {
 	//aktualne temp
 	currentC: 0,
 	currentF: 0,
-	minTempC: -273.15,
-	maxTempC: 200,
 	//ustawienie temperatury na termometrze
 	setTemp: function(unit, value) {
 		if(unit == 'C') {
@@ -146,11 +164,7 @@ let thermometer = {
 				let deltaCTmp = this.currentC - item.minTempC;
 				//przesuniecie w zakresie
 				deltaPx += Math.round((deltaCTmp / item.rangeDeg) * item.rangePx);
-				//break; //koniec obliczen
-			} else if(this.currentC < item.minTempC) {
-				//temp. ponizej zakresu
-				//deltaPx += item
-			} else {
+			} else if(this.currentC > item.maxTempC) {
 				//temp. powyzej zakresu
 				//zmiana temp. w tym zakresie
 				//let deltaCTmp = this.currentC - item.maxTempC;
@@ -194,15 +208,3 @@ let thermometer = {
 };
 
 thermometer.setTemp('C', 0);
-
-let buttonCalculateC = document.getElementsByClassName('btn-calc-c')[0];
-buttonCalculateC.addEventListener('click', function(event) {
-	let temp = document.querySelector('input[name="temperature"]').value;
-	thermometer.setTemp('F', temp);
-});
-
-let buttonCalculateF = document.getElementsByClassName('btn-calc-f')[0];
-buttonCalculateF.addEventListener('click', function(event) {
-	let temp = document.querySelector('input[name="temperature"]').value;
-	thermometer.setTemp('C', temp);
-});
