@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One%7CSpecial+Elite" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Zadanie 8.2</title>
+    </head>
+	<body>
+		<div class="form text-center">
+			<div>
+				<input type="number" name="temperature" min="-300" max="200" value="0">
+			</div>
+			<div>
+				<button class="btn-calc-c">Przelicz na &deg;C</button>
+				<button class="btn-calc-f">Przelicz na &deg;F</button>
+			</div>
+		</div>
+		<div class="container text-center">
+			<div class="cold">
+				<h1>Winter is coming</h1>
+				<div class="gradient"></div>
+			</div>
+			<div class="converter">
+				<div class="output">
+					<div class="outputC">
+						<span class="value"></span> &deg;C
+					</div>
+					<div class="separator"></div>
+					<div class="outputF">
+						<span class="value"></span> &deg;F
+					</div>
+				</div>
+				<div class="thermometer">
+					<div class="mask">
+						<div class="level"></div>
+					</div>
+				</div>
+			</div>
+			<div class="hot">
+				<h1>This is the road to hell</h1>
+				<div class="gradient"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>
